@@ -1,8 +1,7 @@
-import 'dart:convert';
 import 'dart:ui';
 
+import 'package:coffee_flutter_app/lang/translations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class Translator {
   final Locale locale;
@@ -22,24 +21,15 @@ class Translator {
     return Translator.of(context).translate(key);
   }
 
-  Map<String, String> _localizedStrings;
-
-  Future<bool> load() async {
-    // Load the language JSON file from the "lang" folder
-    String jsonString =
-    await rootBundle.loadString('lang/${locale.languageCode}.json');
-    Map<String, dynamic> jsonMap = json.decode(jsonString);
-
-    _localizedStrings = jsonMap.map((key, value) {
-      return MapEntry(key, value.toString());
-    });
-
-    return true;
-  }
-
   // This method will be called from every widget which needs a localized text
   String translate(String key) {
-    return _localizedStrings[key];
+    String translation = getTranslations(locale.languageCode)[key];
+
+    if (translation == null) {
+      return key;
+    }
+
+    return translation;
   }
 }
 
@@ -61,7 +51,6 @@ class _AppLocalizationsDelegate
   Future<Translator> load(Locale locale) async {
     // AppLocalizations class is where the JSON loading actually runs
     Translator localizations = new Translator(locale);
-    await localizations.load();
     return localizations;
   }
 

@@ -3,7 +3,7 @@ import 'package:coffee_flutter_app/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'app_localizations.dart';
+import 'translator.dart';
 import 'cart.dart';
 
 void main() => runApp(CoffeeApp());

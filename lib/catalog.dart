@@ -1,4 +1,5 @@
 
+import 'package:coffee_flutter_app/translator.dart';
 import 'package:flutter/widgets.dart';
 
 class CatalogWidget extends StatelessWidget {
@@ -8,7 +9,7 @@ class CatalogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("Каталог"),
+      child: Text(Translator.trans(context, "catalog_title")),
     );
   }
 }

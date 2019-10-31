@@ -1,5 +1,7 @@
+import 'package:coffee_flutter_app/auth_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'translator.dart';
 
 class ProfileWidget extends StatelessWidget {
 
@@ -10,8 +12,16 @@ class ProfileWidget extends StatelessWidget {
     return Center(
       child: RaisedButton(
         color: Colors.green,
-        child: Text("Войти"),
-        onPressed: () {},
+        textColor: Colors.white,
+        child: Text(Translator.trans(context, "login_button_title")),
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute<Null>(
+            builder: (BuildContext context) {
+              return AuthDialog();
+            },
+            fullscreenDialog: true
+          ));
+        },
       ),
     );
   }

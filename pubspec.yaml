@@ -25,12 +25,23 @@ dependencies:
   cupertino_icons: ^0.1.2
 
   flutter_localizations:
-      sdk: flutter
+    sdk: flutter
+
+  mask_text_input_formatter:
+    path: ./vendor/mask_text_input_formatter
+
+  inject:
+    path: ./vendor/inject.dart/package/inject
 
 dev_dependencies:
+
+  build_runner: ^1.0.0
+
   flutter_test:
     sdk: flutter
 
+  inject_generator:
+    path: ./vendor/inject.dart/package/inject_generator
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
