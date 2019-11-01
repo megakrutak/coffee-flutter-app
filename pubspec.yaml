@@ -30,18 +30,22 @@ dependencies:
   mask_text_input_formatter:
     path: ./vendor/mask_text_input_formatter
 
-  #inject:
-    #path: ./vendor/inject.dart/package/inject
+  json_annotation: ^2.0.0
+
+  inject:
+    path: ./vendor/inject.dart/package/inject
 
 dev_dependencies:
 
-  build_runner: ^1.7.1
+  build_runner: ^1.0.0
+
+  json_serializable: ^2.0.0
 
   flutter_test:
     sdk: flutter
 
-  #inject_generator:
-    #path: ./vendor/inject.dart/package/inject_generator
+  inject_generator:
+    path: ./vendor/inject.dart/package/inject_generator
 
 
 # For information on the generic Dart part of this file, see the
@@ -59,10 +63,6 @@ flutter:
   # assets:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
-
-  assets:
-    - lang/ru.json
-    - lang/en.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

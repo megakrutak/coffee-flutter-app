@@ -1,13 +1,20 @@
 import 'package:coffee_flutter_app/catalog.dart';
+import 'package:coffee_flutter_app/di/auth_module.dart';
 import 'package:coffee_flutter_app/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:inject/inject.dart';
 
+import 'di/injectors/app_injector.dart';
 import 'translator.dart';
 import 'cart.dart';
 
-void main() => runApp(CoffeeApp());
+void main() async {
+  final container = await AppInjector.create(AuthModule());
+  runApp(container.app);
+}
 
+@provide
 class CoffeeApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
