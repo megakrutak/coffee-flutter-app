@@ -1,5 +1,5 @@
+import 'package:coffee_flutter_app/lang/translator.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'translator.dart';
 import 'package:flutter/material.dart';
 
 class AuthDialog extends StatefulWidget {
@@ -12,10 +12,12 @@ class AuthDialog extends StatefulWidget {
 class AuthDialogState extends State<AuthDialog> {
   @override
   Widget build(BuildContext context) {
+    var translator = Translator.of(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text(Translator.trans(context, "authorization_title")),
+        title: Text(translator.trans("authorization_title")),
       ),
       body: Center(
         child: Padding(
@@ -24,7 +26,7 @@ class AuthDialogState extends State<AuthDialog> {
             children: <Widget>[
               _phoneTextField(),
               RaisedButton(
-                child: Text(Translator.trans(context, "send_sms_code_button_title")),
+                child: Text(translator.trans("send_sms_code_button_title")),
                 onPressed: () {},
               ),
               Padding(
@@ -35,7 +37,7 @@ class AuthDialogState extends State<AuthDialog> {
               RaisedButton(
                 color: Colors.green,
                 textColor: Colors.white,
-                child: Text(Translator.trans(context, "login_button_title")),
+                child: Text(translator.trans("login_button_title")),
                 onPressed: () {},
               ),
             ],
@@ -59,7 +61,7 @@ class AuthDialogState extends State<AuthDialog> {
       ],
       decoration: InputDecoration(
           border: OutlineInputBorder(),
-          labelText: Translator.trans(context, "phone_input_label")),
+          labelText: Translator.of(context).trans("phone_input_label")),
       onChanged: (String text) {},
     );
   }
@@ -69,7 +71,7 @@ class AuthDialogState extends State<AuthDialog> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
           border: OutlineInputBorder(),
-          labelText: Translator.trans(context, "sms_code_input_label")
+          labelText: Translator.of(context).trans("sms_code_input_label")
       )
     );
   }

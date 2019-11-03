@@ -1,20 +1,20 @@
-import 'package:coffee_flutter_app/catalog.dart';
-import 'package:coffee_flutter_app/di/auth_module.dart';
-import 'package:coffee_flutter_app/profile.dart';
+import 'dart:io';
+
+import 'package:coffee_flutter_app/cart/cart.dart';
+import 'package:coffee_flutter_app/catalog/catalog.dart';
+import 'package:coffee_flutter_app/di/app_module.dart';
+import 'package:coffee_flutter_app/lang/translator.dart';
+import 'package:coffee_flutter_app/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:inject/inject.dart';
-
-import 'di/injectors/app_injector.dart';
-import 'translator.dart';
-import 'cart.dart';
+import 'package:get_it/get_it.dart';
 
 void main() async {
-  final container = await AppInjector.create(AuthModule());
-  runApp(container.app);
+  GetIt getIt = GetIt.instance;
+  registerAppModule();
+  runApp(getIt.get<CoffeeApp>());
 }
 
-@provide
 class CoffeeApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -44,10 +44,13 @@ class CoffeeApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
       ],
       localeResolutionCallback: (locale, supportedLocales) {
-        // Check if the current device locale is supported
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode) {
-            return supportedLocale;
+        //На ios в симуляторе баг с локалями
+        if (Platform.isAndroid) {
+          // Check if the current device locale is supported
+          for (var supportedLocale in supportedLocales) {
+            if (supportedLocale?.languageCode == locale.languageCode) {
+              return supportedLocale;
+            }
           }
         }
 
@@ -73,11 +76,9 @@ class MainScreen extends StatefulWidget {
 
   @override
   _MainScreenState createState() => _MainScreenState();
-
 }
 
 class _MainScreenState extends State<MainScreen> {
-
   int _selectedIndex = 0;
 
   static const List<Widget> _pages = <Widget>[
@@ -94,6 +95,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var translator = Translator.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -104,23 +107,19 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.fastfood),
-              title: Text(Translator.trans(context, 'catalog_title')),
+            icon: Icon(Icons.fastfood),
+            title: Text(translator.trans('catalog_title')),
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart),
-              title: Text(Translator.trans(context, 'cart_title'))
-          ),
+              title: Text(translator.trans('cart_title'))),
           BottomNavigationBarItem(
               icon: Icon(Icons.settings),
-              title: Text(Translator.trans(context, 'profile_title'))
-          ),
+              title: Text(translator.trans('profile_title'))),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
       ),
     );
   }
-
 }
-

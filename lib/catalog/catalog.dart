@@ -1,6 +1,4 @@
-
 import 'package:coffee_flutter_app/auth/data.dart';
-import 'package:coffee_flutter_app/translator.dart';
 import 'package:flutter/widgets.dart';
 
 class CatalogWidget extends StatelessWidget {

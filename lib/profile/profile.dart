@@ -1,7 +1,7 @@
-import 'package:coffee_flutter_app/auth_dialog.dart';
+import 'package:coffee_flutter_app/auth/auth_dialog.dart';
+import 'package:coffee_flutter_app/lang/translator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'translator.dart';
 
 class ProfileWidget extends StatelessWidget {
 
@@ -13,7 +13,7 @@ class ProfileWidget extends StatelessWidget {
       child: RaisedButton(
         color: Colors.green,
         textColor: Colors.white,
-        child: Text(Translator.trans(context, "login_button_title")),
+        child: Text(Translator.of(context).trans("login_button_title")),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute<Null>(
             builder: (BuildContext context) {
