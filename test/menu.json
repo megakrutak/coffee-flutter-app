@@ -1,0 +1,11 @@
+{
+  "menu": [
+    {
+      "id": 1,
+      "name": "Кофе",
+      "photo": "https://testcf42.joinposter.com//upload/pos_cdb_7631/menu/category_1464608557_1.jpg",
+      "parentCategoryId": 0
+    }
+  ]
+}
+

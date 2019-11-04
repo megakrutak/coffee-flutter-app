@@ -1,4 +1,4 @@
-import 'package:coffee_flutter_app/auth/data.dart';
+import 'package:coffee_flutter_app/auth/entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 

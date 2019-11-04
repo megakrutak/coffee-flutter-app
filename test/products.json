@@ -1,0 +1,42 @@
+{
+  "products": [
+    {
+      "id": 12,
+      "categoryOfMenuId": 1,
+      "name": "Модифицируемый",
+      "photo": null,
+      "photoOriginal": null,
+      "unit": "",
+      "modifications": [
+        {
+          "id": 2,
+          "order": 0,
+          "price": 2200,
+          "name": "Модификация 2"
+        },
+        {
+          "id": 1,
+          "order": 0,
+          "price": 1650,
+          "name": "Модификация 1"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "categoryOfMenuId": 1,
+      "name": "Капучино 250 мл",
+      "photo": "https://testcf42.joinposter.com//upload/pos_cdb_7631/menu/product_1464608672_3.jpg",
+      "photoOriginal": "https://testcf42.joinposter.com//upload/pos_cdb_7631/menu/product_1464608672_3_original.jpg",
+      "unit": "kg",
+      "modifications": [
+        {
+          "id": 3,
+          "order": 0,
+          "price": 10000,
+          "name": "Капучино 250 мл"
+        }
+      ]
+    }
+  ]
+}

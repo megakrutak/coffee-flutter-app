@@ -27,6 +27,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  http: ^0.12.0+2
+
   equatable: ^0.6.0
 
   meta: ^1.1.6
@@ -38,10 +40,14 @@ dependencies:
   mask_text_input_formatter:
     path: ./vendor/mask_text_input_formatter
 
+  firebase_core: ^0.4.0+9
   firebase_auth: ^0.14.0+5
 
   bloc: ^1.0.0
+
   flutter_bloc: ^1.0.0
+
+  flutter_cache_store: ^0.7.0
 
 dev_dependencies:
 

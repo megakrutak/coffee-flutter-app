@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'data.g.dart';
+part 'entity.g.dart';
 
 @JsonSerializable()
 class TokenResponse {
@@ -13,7 +13,7 @@ class TokenResponse {
 
   TokenResponse(this.accessToken, this.type, this.refreshToken);
 
-  factory TokenResponse.fromMappedJson(Map<String, dynamic> json) => _$TokenResponseFromJson(json);
+  factory TokenResponse.fromJson(Map<String, dynamic> json) => _$TokenResponseFromJson(json);
   Map<String, dynamic> toJson() => _$TokenResponseToJson(this);
 }
 
@@ -26,7 +26,7 @@ class Credentials {
 
   Credentials(this.login, this.password);
 
-  factory Credentials.fromMappedJson(Map<String, dynamic> json) => _$CredentialsFromJson(json);
+  factory Credentials.fromJson(Map<String, dynamic> json) => _$CredentialsFromJson(json);
   Map<String, dynamic> toJson() => _$CredentialsToJson(this);
 }
 
@@ -37,6 +37,6 @@ class FirebaseUserTokenCheckRequest {
 
   FirebaseUserTokenCheckRequest(this.tokenId);
 
-  factory FirebaseUserTokenCheckRequest.fromMappedJson(Map<String, dynamic> json) => _$FirebaseUserTokenCheckRequestFromJson(json);
+  factory FirebaseUserTokenCheckRequest.fromJson(Map<String, dynamic> json) => _$FirebaseUserTokenCheckRequestFromJson(json);
   Map<String, dynamic> toJson() => _$FirebaseUserTokenCheckRequestToJson(this);
 }

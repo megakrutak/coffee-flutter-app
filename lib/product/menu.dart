@@ -1,9 +1,9 @@
-import 'package:coffee_flutter_app/auth/data.dart';
+import 'package:coffee_flutter_app/auth/entity.dart';
 import 'package:flutter/widgets.dart';
 
-class CatalogWidget extends StatelessWidget {
+class MenuWidget extends StatelessWidget {
 
-  const CatalogWidget({Key key}) : super(key: key);
+  const MenuWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
