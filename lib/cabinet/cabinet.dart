@@ -1,6 +1,6 @@
 import 'package:coffee_flutter_app/cart/cart.dart';
 import 'package:coffee_flutter_app/lang/translator.dart';
-import 'package:coffee_flutter_app/product/menu.dart';
+import 'package:coffee_flutter_app/product/product_menu.dart';
 import 'package:coffee_flutter_app/profile/profile.dart';
 import 'package:flutter/material.dart';
 

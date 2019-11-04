@@ -1,17 +1,17 @@
-import 'package:coffee_flutter_app/auth/api.dart';
+import 'package:coffee_flutter_app/auth/auth_api.dart';
 import 'package:coffee_flutter_app/auth/auth_provider.dart';
-import 'package:coffee_flutter_app/auth/repo.dart';
+import 'package:coffee_flutter_app/auth/auth_repo.dart';
 import 'package:coffee_flutter_app/base/http.dart';
 import 'package:coffee_flutter_app/config/app_config.dart';
 import 'package:coffee_flutter_app/main.dart';
-import 'package:coffee_flutter_app/product/repo.dart';
+import 'package:coffee_flutter_app/product/product_repo.dart';
 import 'package:get_it/get_it.dart';
 
 void registerAppModule() {
   GetIt getIt = GetIt.instance;
 
   var appConfig = AppConfig(
-      apiBaseUrl: "http://localhost:8085/",
+      apiBaseUrl: "http://192.168.1.101:8085",
       apiBasicAuthUsername: "client-id",
       apiBasicAuthPassword: "client-secret");
 

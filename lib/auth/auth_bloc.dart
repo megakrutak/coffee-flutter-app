@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:coffee_flutter_app/auth/event.dart';
-import 'package:coffee_flutter_app/auth/repo.dart';
-import 'package:coffee_flutter_app/auth/state.dart';
+import 'package:coffee_flutter_app/auth/auth_event.dart';
+import 'package:coffee_flutter_app/auth/auth_repo.dart';
+import 'package:coffee_flutter_app/auth/auth_state.dart';
 import 'package:meta/meta.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
@@ -22,12 +22,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } else {
         yield AuthUnauthenticated();
       }
-    }
-
-    if (event is PhoneSended) {
-      yield AuthLoading();
-      await authRepository.sendPhone(event.phone);
-      yield AuthInitialized();
     }
 
     if (event is LoggedIn) {

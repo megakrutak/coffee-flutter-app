@@ -1,4 +1,4 @@
-import 'package:coffee_flutter_app/auth/entity.dart';
+import 'package:coffee_flutter_app/auth/auth_entity.dart';
 import 'package:flutter/widgets.dart';
 
 class MenuWidget extends StatelessWidget {

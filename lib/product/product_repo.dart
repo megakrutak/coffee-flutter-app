@@ -1,4 +1,4 @@
-import 'package:coffee_flutter_app/product/entity.dart';
+import 'package:coffee_flutter_app/product/product_entity.dart';
 
 abstract class ProductRepository {
   Future<ProductMenu> getMenu({bool fromCache = false});

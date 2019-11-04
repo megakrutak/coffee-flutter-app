@@ -1,5 +1,5 @@
 import 'package:coffee_flutter_app/cache/cache.dart';
-import 'package:coffee_flutter_app/product/entity.dart';
+import 'package:coffee_flutter_app/product/product_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

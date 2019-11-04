@@ -195,13 +195,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  flutter_cache_store:
-    dependency: "direct main"
-    description:
-      name: flutter_cache_store
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.7.0"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -253,7 +246,21 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.0+2"
+    version: "0.11.3+17"
+  http_logger:
+    dependency: "direct main"
+    description:
+      name: http_logger
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  http_middleware:
+    dependency: "direct main"
+    description:
+      name: http_middleware
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   http_multi_server:
     dependency: transitive
     description:
@@ -380,13 +387,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.4"
-  path_provider:
-    dependency: transitive
-    description:
-      name: path_provider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.4.0"
   pedantic:
     dependency: transitive
     description:
@@ -394,13 +394,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0+1"
-  platform:
-    dependency: transitive
+  pin_code_text_field:
+    dependency: "direct main"
     description:
-      name: platform
+      name: pin_code_text_field
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "1.4.0"
   plugin:
     dependency: transitive
     description:
@@ -450,13 +450,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.22.5"
-  shared_preferences:
-    dependency: transitive
-    description:
-      name: shared_preferences
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.5.4+3"
   shelf:
     dependency: transitive
     description:
@@ -518,13 +511,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  synchronized:
-    dependency: transitive
-    description:
-      name: synchronized
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.0+1"
   term_glyph:
     dependency: transitive
     description:
@@ -583,4 +569,4 @@ packages:
     version: "2.2.0"
 sdks:
   dart: ">=2.3.0 <3.0.0"
-  flutter: ">=1.6.7 <2.0.0"
+  flutter: ">=1.5.0 <2.0.0"

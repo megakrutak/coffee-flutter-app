@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:coffee_flutter_app/auth/entity.dart';
+import 'package:coffee_flutter_app/auth/auth_entity.dart';
 import 'package:coffee_flutter_app/base/http.dart';
 import 'package:coffee_flutter_app/config/app_config.dart';
 
@@ -21,19 +21,23 @@ class RemoteAuthApi extends AuthApi {
   Future<Credentials> authFirebase(
       FirebaseUserTokenCheckRequest request) async {
     var response = await _httpClient.post('/api/v1/auth/firebase',
-        headers: {}, body: request.toJson());
+        headers: {}, body: json.encode(request.toJson()));
     return Credentials.fromJson(json.decode(response.body));
   }
 
   @override
   Future<TokenResponse> getOAuthToken(
       String grantType, String login, String password) async {
-    var username = _appConfig.apiBasicAuthUsername;
-    var password = _appConfig.apiBasicAuthPassword;
+    var client = _appConfig.apiBasicAuthUsername;
+    var secret = _appConfig.apiBasicAuthPassword;
 
-    var basicAuth = 'Basic ' + base64Encode(utf8.encode('$username:$password'));
-    var response = await _httpClient
-        .post('/oauth/token', headers: {'Authorization': basicAuth});
+    var basicAuth = 'Basic ' + base64Encode(utf8.encode('$client:$secret'));
+    var response = await _httpClient.post(
+        '/oauth/token?grant_type=$grantType&username=$login&password=$password',
+        headers: {
+          //'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+          'Authorization': basicAuth
+        });
 
     return TokenResponse.fromJson(json.decode(response.body));
   }

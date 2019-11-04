@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'package:coffee_flutter_app/auth/api.dart';
-import 'package:coffee_flutter_app/auth/entity.dart';
+import 'package:coffee_flutter_app/auth/auth_api.dart';
+import 'package:coffee_flutter_app/auth/auth_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthRepository {
-  Future<void> sendPhone(String phone);
+  Future<String> sendPhone(String phone);
 
   Future<TokenResponse> sendCode(String code);
 
@@ -23,8 +23,8 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this._authApi);
 
   @override
-  Future<void> sendPhone(String phone) async {
-    return await FirebaseAuth.instance.verifyPhoneNumber(
+  Future<String> sendPhone(String phone) async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: phone,
         timeout: Duration(seconds: 60),
         verificationCompleted: (AuthCredential authCredentials) {
@@ -39,10 +39,16 @@ class AuthRepositoryImpl implements AuthRepository {
         codeAutoRetrievalTimeout: (String verificationId) {
           _verificationId = verificationId;
         });
+
+    return _verificationId;
   }
 
   @override
   Future<TokenResponse> sendCode(String code) async {
+    if (_verificationId.isEmpty) {
+      throw AuthException("verification_id_is_empty", "verificationId is empty");
+    }
+
     var authCredentials = PhoneAuthProvider.getCredential(
         verificationId: _verificationId, smsCode: code);
     var authResult =

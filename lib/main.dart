@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:bloc/bloc.dart';
-import 'package:coffee_flutter_app/auth/repo.dart';
+import 'package:coffee_flutter_app/auth/auth_repo.dart';
 import 'package:coffee_flutter_app/cabinet/cabinet.dart';
 import 'package:coffee_flutter_app/di/app_module.dart';
 import 'package:coffee_flutter_app/lang/translator.dart';
@@ -9,9 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
-import 'auth/bloc.dart';
-import 'auth/event.dart';
-import 'auth/state.dart';
+import 'auth/auth_bloc.dart';
+import 'auth/auth_event.dart';
+import 'auth/auth_state.dart';
 
 void main() async {
   BlocSupervisor.delegate = SimpleBlocDelegate();
@@ -25,7 +25,7 @@ void main() async {
         return AuthBloc(authRepository: getIt.get<AuthRepository>())
           ..add(AppStarted());
       },
-      child: getIt.get<CoffeeApp>(),
+      child: CoffeeApp(),
     ),
   );
 }

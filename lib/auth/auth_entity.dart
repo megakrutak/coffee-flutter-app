@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'entity.g.dart';
+part 'auth_entity.g.dart';
 
 @JsonSerializable()
 class TokenResponse {
