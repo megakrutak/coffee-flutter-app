@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:coffee_flutter_app/cart/cart.dart';
 import 'package:coffee_flutter_app/lang/translator.dart';
+import 'package:coffee_flutter_app/logo.dart';
 import 'package:coffee_flutter_app/product/product_menu.dart';
+import 'package:coffee_flutter_app/product/test.dart';
 import 'package:coffee_flutter_app/profile/profile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CabinetScreen extends StatefulWidget {
@@ -39,31 +44,84 @@ class _CabinetScreenState extends State<CabinetScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var translator = Translator.of(context);
+    var theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        elevation: 0,
+        title: _buildAppBarLogo(),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {}),
+        ],
+      ),
+      drawer: Drawer(
+        elevation: 0,
+        child: Container(
+          color: Theme.of(context).primaryColor,
+          child: ListView(
+            padding: EdgeInsets.all(32.0),
+            children: <Widget>[
+              SizedBox(height: 32.0),
+              _buildLogoItem(),
+              SizedBox(height: 64.0, child: Divider()),
+              _buildLoginItems(context),
+              SizedBox(height: 64.0, child: Divider()),
+              _buildMenuItem(context, "Меню"),
+              SizedBox(height: 16.0),
+              _buildMenuItem(context, "Корзина"),
+              SizedBox(height: 16.0),
+              _buildMenuItem(context, "Избранное"),
+              SizedBox(height: 16.0),
+              _buildMenuItem(context, "История заказов"),
+              SizedBox(height: 16.0),
+              _buildMenuItem(context, "Акции"),
+              SizedBox(height: 16.0),
+              _buildMenuItem(context, "Информация"),
+            ],
+          ),
+        ),
       ),
       body: Center(
-        child: _pages.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.fastfood),
-            title: Text(translator.trans('catalog_title')),
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
-              title: Text(translator.trans('cart_title'))),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              title: Text(translator.trans('profile_title'))),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        child: MenuWidget(),
       ),
     );
+  }
+
+  Widget _buildLoginItems(BuildContext context) {
+    var theme = Theme.of(context);
+    return Column(
+      children: <Widget>[
+        Container(
+          alignment: Alignment.centerLeft,
+          child: Text("Привет!", style: theme.accentTextTheme.title),
+        ),
+        SizedBox(height: 16.0),
+        Row(
+          children: <Widget>[
+            Text("Войти", style: Theme.of(context).accentTextTheme.body1),
+            Icon(Icons.keyboard_arrow_right, color: theme.accentTextTheme.title.color,)
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget _buildMenuItem(BuildContext context, String title) {
+    var theme = Theme.of(context);
+    return Container(
+      child: Text(title, style: theme.accentTextTheme.body1),
+    );
+  }
+
+  Widget _buildAppBarLogo() {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[RoboCoffeeLogoMini()]);
+  }
+
+  Widget _buildLogoItem() {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[RoboCoffeeLogo()]);
   }
 }

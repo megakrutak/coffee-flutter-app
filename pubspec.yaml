@@ -30,15 +30,10 @@ dependencies:
   http: ^0.11.3+16
   http_logger: ^1.0.0
   http_middleware: ^1.0.0
-
   equatable: ^0.6.0
-
   meta: ^1.1.6
-
   json_annotation: ^2.0.0
-
   get_it: ^3.0.3
-
   mask_text_input_formatter:
     path: ./vendor/mask_text_input_formatter
 
@@ -46,10 +41,12 @@ dependencies:
   firebase_auth: ^0.14.0+5
 
   bloc: ^1.0.0
-
   flutter_bloc: ^1.0.0
-
   pin_code_text_field: ^1.4.0
+  cached_network_image: ^1.1.1
+
+  flutter_swiper: ^1.1.4
+  flutter_custom_clippers: ^0.1.1
 
 dev_dependencies:
 
