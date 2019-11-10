@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:coffee_flutter_app/auth/auth_event.dart';
-import 'package:coffee_flutter_app/auth/auth_repo.dart';
-import 'package:coffee_flutter_app/auth/auth_state.dart';
+import 'package:robo_coffee_app/auth/auth_event.dart';
+import 'package:robo_coffee_app/auth/auth_repo.dart';
+import 'package:robo_coffee_app/auth/auth_state.dart';
 import 'package:meta/meta.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {

@@ -1,5 +1,5 @@
-import 'package:coffee_flutter_app/cache/cache.dart';
-import 'package:coffee_flutter_app/product/product_entity.dart';
+import 'package:robo_coffee_app/cache/cache.dart';
+import 'package:robo_coffee_app/product/product_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -25,14 +25,14 @@ void main() {
 
     test('clear all success', () {
       var product = Product(1, 1, "product1", "", "", "", List.of([]));
-      var menu = ProductMenu(1, "menu1", "", 0);
+      var menu = ProductMenuItem(1, "menu1", "", 0);
       var cache = MemoryCacheManager();
       cache.write(product);
       cache.write(menu);
       cache.clearAll();
 
       expect(cache.read<Product>(), null);
-      expect(cache.read<ProductMenu>(), null);
+      expect(cache.read<ProductMenuItem>(), null);
     });
 
   });

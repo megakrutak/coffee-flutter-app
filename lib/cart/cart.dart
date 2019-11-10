@@ -1,4 +1,4 @@
-import 'package:coffee_flutter_app/lang/translator.dart';
+import 'package:robo_coffee_app/lang/translator.dart';
 import 'package:flutter/widgets.dart';
 
 class CartWidget extends StatelessWidget {

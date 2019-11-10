@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:coffee_flutter_app/auth/auth_provider.dart';
-import 'package:coffee_flutter_app/base/http_error_handler.dart';
-import 'package:coffee_flutter_app/config/app_config.dart';
+import 'package:robo_coffee_app/auth/auth_provider.dart';
+import 'package:robo_coffee_app/base/http_error_handler.dart';
+import 'package:robo_coffee_app/config/app_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_logger/http_logger.dart';
 import 'package:http_middleware/http_with_middleware.dart';

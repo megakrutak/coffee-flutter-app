@@ -1,4 +1,4 @@
-import 'package:coffee_flutter_app/ui/network_image.dart';
+import 'package:robo_coffee_app/ui/network_image.dart';
 import 'package:flutter/material.dart';
 
 class PromotionCard extends StatelessWidget {

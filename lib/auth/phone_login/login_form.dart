@@ -1,7 +1,7 @@
-import 'package:coffee_flutter_app/auth/phone_login/login_bloc.dart';
-import 'package:coffee_flutter_app/auth/phone_login/login_event.dart';
-import 'package:coffee_flutter_app/auth/phone_login/login_state.dart';
-import 'package:coffee_flutter_app/lang/translator.dart';
+import 'package:robo_coffee_app/auth/phone_login/login_bloc.dart';
+import 'package:robo_coffee_app/auth/phone_login/login_event.dart';
+import 'package:robo_coffee_app/auth/phone_login/login_state.dart';
+import 'package:robo_coffee_app/lang/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';

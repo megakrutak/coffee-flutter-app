@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:coffee_flutter_app/base/exception.dart';
+import 'package:robo_coffee_app/base/exception.dart';
 import 'package:http_middleware/http_middleware.dart';
 
 class HttpErrorHandler implements MiddlewareContract {

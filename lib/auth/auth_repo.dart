@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:coffee_flutter_app/auth/auth_api.dart';
-import 'package:coffee_flutter_app/auth/auth_entity.dart';
+import 'package:robo_coffee_app/auth/auth_api.dart';
+import 'package:robo_coffee_app/auth/auth_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthRepository {

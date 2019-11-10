@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:robo_coffee_app/ui/error_placeholder.dart';
+import 'package:robo_coffee_app/ui/loading_placeholder.dart';
 import 'package:flutter/material.dart';
 
 class PNetworkImage extends StatelessWidget {
@@ -13,8 +15,8 @@ class PNetworkImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: image,
-      placeholder: (context, url) => Center(child: CircularProgressIndicator()),
-      errorWidget: (context, url, error) => Center(child: Icon(Icons.error)),
+      placeholder: (context, url) => LoadingPlaceholder(),
+      errorWidget: (context, url, error) => ErrorPlaceholder(),
       fit: fit,
       width: width,
       height: height,

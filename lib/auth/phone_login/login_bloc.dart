@@ -1,12 +1,12 @@
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
-import 'package:coffee_flutter_app/auth/auth_bloc.dart';
-import 'package:coffee_flutter_app/auth/auth_entity.dart';
-import 'package:coffee_flutter_app/auth/auth_event.dart';
-import 'package:coffee_flutter_app/auth/auth_repo.dart';
-import 'package:coffee_flutter_app/auth/phone_login/login_event.dart';
-import 'package:coffee_flutter_app/auth/phone_login/login_state.dart';
+import 'package:robo_coffee_app/auth/auth_bloc.dart';
+import 'package:robo_coffee_app/auth/auth_entity.dart';
+import 'package:robo_coffee_app/auth/auth_event.dart';
+import 'package:robo_coffee_app/auth/auth_repo.dart';
+import 'package:robo_coffee_app/auth/phone_login/login_event.dart';
+import 'package:robo_coffee_app/auth/phone_login/login_state.dart';
 import 'package:meta/meta.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {

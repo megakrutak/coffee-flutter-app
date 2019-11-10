@@ -1,4 +1,4 @@
-import 'package:coffee_flutter_app/logo.dart';
+import 'package:robo_coffee_app/logo.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {

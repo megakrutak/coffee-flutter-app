@@ -5,7 +5,7 @@ part 'product_entity.g.dart';
 @JsonSerializable()
 class ProductMenuResponse {
   @JsonKey(name: "menu")
-  List<ProductMenu> menu;
+  List<ProductMenuItem> menu;
 
   ProductMenuResponse(this.menu);
 
@@ -16,7 +16,7 @@ class ProductMenuResponse {
 }
 
 @JsonSerializable()
-class ProductMenu {
+class ProductMenuItem {
   @JsonKey(name: "id")
   int id;
 
@@ -29,12 +29,12 @@ class ProductMenu {
   @JsonKey(name: "parentCategoryId")
   int parentCategoryId;
 
-  ProductMenu(this.id, this.name, this.photo, this.parentCategoryId);
+  ProductMenuItem(this.id, this.name, this.photo, this.parentCategoryId);
 
-  factory ProductMenu.fromJson(Map<String, dynamic> json) =>
-      _$ProductMenuFromJson(json);
+  factory ProductMenuItem.fromJson(Map<String, dynamic> json) =>
+      _$ProductMenuItemFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ProductMenuToJson(this);
+  Map<String, dynamic> toJson() => _$ProductMenuItemToJson(this);
 }
 
 @JsonSerializable()

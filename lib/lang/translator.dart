@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:coffee_flutter_app/lang/translations.dart';
+import 'package:robo_coffee_app/lang/translations.dart';
 import 'package:flutter/material.dart';
 
 class Translator {

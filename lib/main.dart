@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:bloc/bloc.dart';
-import 'package:coffee_flutter_app/auth/auth_repo.dart';
-import 'package:coffee_flutter_app/cabinet/cabinet.dart';
-import 'package:coffee_flutter_app/di/app_module.dart';
-import 'package:coffee_flutter_app/lang/translator.dart';
-import 'package:coffee_flutter_app/splash.dart';
-import 'package:coffee_flutter_app/theme/theme_data.dart';
+import 'package:robo_coffee_app/auth/auth_repo.dart';
+import 'package:robo_coffee_app/cabinet/cabinet.dart';
+import 'package:robo_coffee_app/di/app_module.dart';
+import 'package:robo_coffee_app/lang/translator.dart';
+import 'package:robo_coffee_app/splash.dart';
+import 'package:robo_coffee_app/theme/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -70,7 +70,7 @@ class CoffeeApp extends StatelessWidget {
               return LoadingIndicator();
             }
 
-            return CabinetScreen(title: "RoboCoffee");
+            return CabinetScreen();
           },
         ));
   }

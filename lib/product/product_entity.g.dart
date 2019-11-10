@@ -8,8 +8,9 @@ part of 'product_entity.dart';
 
 ProductMenuResponse _$ProductMenuResponseFromJson(Map<String, dynamic> json) {
   return ProductMenuResponse((json['menu'] as List)
-      ?.map((e) =>
-          e == null ? null : ProductMenu.fromJson(e as Map<String, dynamic>))
+      ?.map((e) => e == null
+          ? null
+          : ProductMenuItem.fromJson(e as Map<String, dynamic>))
       ?.toList());
 }
 
@@ -17,12 +18,12 @@ Map<String, dynamic> _$ProductMenuResponseToJson(
         ProductMenuResponse instance) =>
     <String, dynamic>{'menu': instance.menu};
 
-ProductMenu _$ProductMenuFromJson(Map<String, dynamic> json) {
-  return ProductMenu(json['id'] as int, json['name'] as String,
+ProductMenuItem _$ProductMenuItemFromJson(Map<String, dynamic> json) {
+  return ProductMenuItem(json['id'] as int, json['name'] as String,
       json['photo'] as String, json['parentCategoryId'] as int);
 }
 
-Map<String, dynamic> _$ProductMenuToJson(ProductMenu instance) =>
+Map<String, dynamic> _$ProductMenuItemToJson(ProductMenuItem instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

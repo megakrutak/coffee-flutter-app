@@ -1,7 +1,7 @@
-import 'package:coffee_flutter_app/product/product_entity.dart';
+import 'package:robo_coffee_app/product/product_entity.dart';
 
 abstract class ProductRepository {
-  Future<ProductMenu> getMenu({bool fromCache = false});
+  Future<ProductMenuResponse> getMenu({bool fromCache = false});
 
   Future<List<Product>> getProducts(
       {int categoryOfMenuId, bool fromCache = false});
@@ -9,11 +9,28 @@ abstract class ProductRepository {
 
 class FakeProductRepository implements ProductRepository {
   @override
-  Future<ProductMenu> getMenu({bool fromCache = false}) {
+  Future<ProductMenuResponse> getMenu({bool fromCache = false}) {
     return Future.delayed(
         Duration(seconds: 3),
-        () => ProductMenu(1, "Кофе",
-            "https://u24.ru/img/news/article_big_496401565261951.jpg", 0));
+        () {
+          throw Exception("huy");
+
+          return ProductMenuResponse(List.of([
+            ProductMenuItem(1, "Кофе",
+                "https://u24.ru/img/news/article_big_496401565261951.jpg", 0),
+            ProductMenuItem(2, "Кофе2",
+                "https://u24.ru/img/news/article_big_496401565261951.jpg", 0),
+            ProductMenuItem(3, "Кофе3",
+                "https://u24.ru/img/news/article_big_496401565261951.jpg", 0),
+            ProductMenuItem(4, "Кофе4",
+                "https://u24.ru/img/news/article_big_496401565261951.jpg", 0),
+            ProductMenuItem(5, "Кофе5",
+                "https://u24.ru/img/news/article_big_496401565261951.jpg", 0),
+            ProductMenuItem(6, "Кофе6",
+                "https://u24.ru/img/news/article_big_496401565261951.jpg", 0)
+          ]));
+        }
+    );
   }
 
   @override

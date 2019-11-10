@@ -1,50 +1,31 @@
-import 'dart:io';
-
-import 'package:coffee_flutter_app/cart/cart.dart';
-import 'package:coffee_flutter_app/lang/translator.dart';
-import 'package:coffee_flutter_app/logo.dart';
-import 'package:coffee_flutter_app/product/product_menu.dart';
-import 'package:coffee_flutter_app/product/test.dart';
-import 'package:coffee_flutter_app/profile/profile.dart';
+import 'package:robo_coffee_app/lang/translator.dart';
+import 'package:robo_coffee_app/logo.dart';
+import 'package:robo_coffee_app/product/menu/menu.dart';
+import 'package:robo_coffee_app/product/menu/menu_bloc.dart';
+import 'package:robo_coffee_app/product/menu/menu_event.dart';
+import 'package:robo_coffee_app/product/product_repo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
-class CabinetScreen extends StatefulWidget {
-  CabinetScreen({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _CabinetScreenState createState() => _CabinetScreenState();
-}
-
-class _CabinetScreenState extends State<CabinetScreen> {
-  int _selectedIndex = 0;
-
-  static const List<Widget> _pages = <Widget>[
-    MenuWidget(),
-    CartWidget(),
-    ProfileWidget(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class CabinetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
+    GetIt getIt = GetIt.instance;
+    var productRepo = getIt.get<ProductRepository>();
+
+    return BlocProvider<MenuBloc>(
+      builder: (context) {
+        return MenuBloc(repo: productRepo)..add(LoadMenu());
+      },
+      child: _buildScreen(context),
+    );
+  }
+
+  Widget _buildScreen(BuildContext context) {
+    var trans = Translator.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -66,17 +47,17 @@ class _CabinetScreenState extends State<CabinetScreen> {
               SizedBox(height: 64.0, child: Divider()),
               _buildLoginItems(context),
               SizedBox(height: 64.0, child: Divider()),
-              _buildMenuItem(context, "Меню"),
+              _buildMenuItem(context, trans.trans("menu_title")),
               SizedBox(height: 16.0),
-              _buildMenuItem(context, "Корзина"),
+              _buildMenuItem(context, trans.trans("cart_title")),
               SizedBox(height: 16.0),
-              _buildMenuItem(context, "Избранное"),
+              _buildMenuItem(context, trans.trans("favorites_title")),
               SizedBox(height: 16.0),
-              _buildMenuItem(context, "История заказов"),
+              _buildMenuItem(context, trans.trans("history_title")),
               SizedBox(height: 16.0),
-              _buildMenuItem(context, "Акции"),
+              _buildMenuItem(context, trans.trans("promotions_title")),
               SizedBox(height: 16.0),
-              _buildMenuItem(context, "Информация"),
+              _buildMenuItem(context, trans.trans("info_title")),
             ],
           ),
         ),
@@ -89,17 +70,24 @@ class _CabinetScreenState extends State<CabinetScreen> {
 
   Widget _buildLoginItems(BuildContext context) {
     var theme = Theme.of(context);
+    var trans = Translator.of(context);
+
     return Column(
       children: <Widget>[
         Container(
           alignment: Alignment.centerLeft,
-          child: Text("Привет!", style: theme.accentTextTheme.title),
+          child: Text(trans.trans("hello_title"),
+              style: theme.accentTextTheme.title),
         ),
         SizedBox(height: 16.0),
         Row(
           children: <Widget>[
-            Text("Войти", style: Theme.of(context).accentTextTheme.body1),
-            Icon(Icons.keyboard_arrow_right, color: theme.accentTextTheme.title.color,)
+            Text(trans.trans("login_button_title"),
+                style: Theme.of(context).accentTextTheme.body1),
+            Icon(
+              Icons.keyboard_arrow_right,
+              color: theme.accentTextTheme.title.color,
+            )
           ],
         )
       ],

@@ -1,10 +1,10 @@
-import 'package:coffee_flutter_app/product/product_entity.dart';
-import 'package:coffee_flutter_app/ui/network_image.dart';
+import 'package:robo_coffee_app/product/product_entity.dart';
+import 'package:robo_coffee_app/ui/network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProductCategoryCard extends StatelessWidget {
-  final ProductMenu category;
+  final ProductMenuItem category;
 
   ProductCategoryCard(this.category);
 

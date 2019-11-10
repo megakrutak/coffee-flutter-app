@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:coffee_flutter_app/auth/auth_entity.dart';
-import 'package:coffee_flutter_app/base/http.dart';
-import 'package:coffee_flutter_app/config/app_config.dart';
+import 'package:robo_coffee_app/auth/auth_entity.dart';
+import 'package:robo_coffee_app/base/http.dart';
+import 'package:robo_coffee_app/config/app_config.dart';
 
 abstract class AuthApi {
   Future<Credentials> authFirebase(FirebaseUserTokenCheckRequest request);

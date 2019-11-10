@@ -1,8 +1,8 @@
-import 'package:coffee_flutter_app/auth/auth_bloc.dart';
-import 'package:coffee_flutter_app/auth/auth_repo.dart';
-import 'package:coffee_flutter_app/auth/phone_login/login_bloc.dart';
-import 'package:coffee_flutter_app/auth/phone_login/login_form.dart';
-import 'package:coffee_flutter_app/lang/translator.dart';
+import 'package:robo_coffee_app/auth/auth_bloc.dart';
+import 'package:robo_coffee_app/auth/auth_repo.dart';
+import 'package:robo_coffee_app/auth/phone_login/login_bloc.dart';
+import 'package:robo_coffee_app/auth/phone_login/login_form.dart';
+import 'package:robo_coffee_app/lang/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';

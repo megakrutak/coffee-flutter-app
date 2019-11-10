@@ -1,7 +1,7 @@
-import 'package:coffee_flutter_app/auth/auth_bloc.dart';
-import 'package:coffee_flutter_app/auth/auth_dialog.dart';
-import 'package:coffee_flutter_app/auth/auth_state.dart';
-import 'package:coffee_flutter_app/lang/translator.dart';
+import 'package:robo_coffee_app/auth/auth_bloc.dart';
+import 'package:robo_coffee_app/auth/auth_dialog.dart';
+import 'package:robo_coffee_app/auth/auth_state.dart';
+import 'package:robo_coffee_app/lang/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
