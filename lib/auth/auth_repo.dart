@@ -16,7 +16,8 @@ abstract class AuthRepository {
 }
 
 class AuthRepositoryImpl implements AuthRepository {
-  var _token;
+  //var _token = TokenResponse("access", "bearer", "refresh"); //FIXME: shit
+  var _token; //= TokenResponse("access", "bearer", "refresh"); //FIXME: shit
   var _verificationId = "";
   AuthApi _authApi;
 

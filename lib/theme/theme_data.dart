@@ -17,6 +17,7 @@ var appTheme = ThemeData(
     headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
     title: TextStyle(fontSize: 24.0, fontStyle: FontStyle.normal),
     body1: TextStyle(fontSize: 14.0, fontFamily: 'Montserrat'),
+    subtitle: TextStyle(fontSize: 16.0)
   ),
 
   accentTextTheme: TextTheme(

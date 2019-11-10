@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:robo_coffee_app/auth/auth_dialog.dart';
 import 'package:robo_coffee_app/auth/auth_repo.dart';
-import 'package:robo_coffee_app/cabinet/cabinet.dart';
+import 'package:robo_coffee_app/cabinet.dart';
 import 'package:robo_coffee_app/di/app_module.dart';
 import 'package:robo_coffee_app/lang/translator.dart';
+import 'package:robo_coffee_app/profile/profile_dialog.dart';
+import 'package:robo_coffee_app/profile/profile_repo.dart';
 import 'package:robo_coffee_app/splash.dart';
 import 'package:robo_coffee_app/theme/theme_data.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +26,7 @@ void main() async {
   runApp(
     BlocProvider<AuthBloc>(
       builder: (context) {
-        return AuthBloc(authRepository: getIt.get<AuthRepository>())
+        return AuthBloc(authRepo: getIt.get<AuthRepository>(), profileRepo: getIt.get<ProfileRepository>())
           ..add(AppStarted());
       },
       child: CoffeeApp(),
@@ -60,19 +63,32 @@ class CoffeeApp extends StatelessWidget {
 
           return supportedLocales.first;
         },
-        home: BlocBuilder<AuthBloc, AuthState>(
-          builder: (context, state) {
-            if (state is AuthUninitialized) {
-              return SplashScreen();
-            }
+        initialRoute: '/',
+        routes: {
+          '/': (context) => _buildHome(),
+          '/favorites': (context) => _buildHome(),
+          '/cart': (context) => _buildHome(),
+          '/history': (context) => _buildHome(),
+          '/promo': (context) => _buildHome(),
+          '/info': (context) => _buildHome()
+        }
+    );
+  }
 
-            if (state is AuthLoading) {
-              return LoadingIndicator();
-            }
+  Widget _buildHome() {
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        if (state is AuthUninitialized) {
+          return SplashScreen();
+        }
 
-            return CabinetScreen();
-          },
-        ));
+        if (state is AuthLoading) {
+          return LoadingIndicator();
+        }
+
+        return CabinetScreen();
+      },
+    );
   }
 }
 

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:robo_coffee_app/auth/auth_entity.dart';
 import 'package:robo_coffee_app/base/http.dart';
 import 'package:robo_coffee_app/config/app_config.dart';

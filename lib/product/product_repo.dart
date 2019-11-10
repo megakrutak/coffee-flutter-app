@@ -7,14 +7,12 @@ abstract class ProductRepository {
       {int categoryOfMenuId, bool fromCache = false});
 }
 
-class FakeProductRepository implements ProductRepository {
+class FakeProductRepositoryImpl implements ProductRepository {
   @override
   Future<ProductMenuResponse> getMenu({bool fromCache = false}) {
     return Future.delayed(
         Duration(seconds: 3),
         () {
-          throw Exception("huy");
-
           return ProductMenuResponse(List.of([
             ProductMenuItem(1, "Кофе",
                 "https://u24.ru/img/news/article_big_496401565261951.jpg", 0),

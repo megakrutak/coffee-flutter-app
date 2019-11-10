@@ -3,11 +3,13 @@ import 'package:robo_coffee_app/auth/auth_event.dart';
 import 'package:robo_coffee_app/auth/auth_repo.dart';
 import 'package:robo_coffee_app/auth/auth_state.dart';
 import 'package:meta/meta.dart';
+import 'package:robo_coffee_app/profile/profile_repo.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepository authRepository;
+  final AuthRepository authRepo;
+  final ProfileRepository profileRepo;
 
-  AuthBloc({@required this.authRepository}) : assert(authRepository != null);
+  AuthBloc({@required this.authRepo, @required this.profileRepo}) : assert(authRepo != null && profileRepo != null);
 
   @override
   AuthState get initialState => AuthUninitialized();
@@ -15,10 +17,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   @override
   Stream<AuthState> mapEventToState(AuthEvent event) async* {
     if (event is AppStarted) {
-      var token = await authRepository.getToken();
+      var token = await authRepo.getToken();
+      var profile = await profileRepo.getProfile();
 
       if (token != null) {
-        yield AuthAuthenticated();
+        yield AuthAuthenticated(profile: profile);
       } else {
         yield AuthUnauthenticated();
       }
@@ -26,13 +29,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     if (event is LoggedIn) {
       yield AuthLoading();
-      await authRepository.persistToken(event.token);
-      yield AuthAuthenticated();
+      await authRepo.persistToken(event.token);
+      var profile = await profileRepo.getProfile(fromCache: true);
+      yield AuthAuthenticated(profile: profile);
     }
 
     if (event is LoggedOut) {
       yield AuthLoading();
-      await authRepository.deleteToken();
+      await authRepo.deleteToken();
       yield AuthUnauthenticated();
     }
   }

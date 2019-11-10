@@ -31,7 +31,7 @@ class MenuWidget extends StatelessWidget {
             children: <Widget>[
               Container(
                 height: 100,
-                color: Colors.green,
+                color: Theme.of(context).primaryColor,
               ),
               ListView(
                 scrollDirection: Axis.vertical,

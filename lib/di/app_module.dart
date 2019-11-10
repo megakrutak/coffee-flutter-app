@@ -6,6 +6,7 @@ import 'package:robo_coffee_app/config/app_config.dart';
 import 'package:robo_coffee_app/main.dart';
 import 'package:robo_coffee_app/product/product_repo.dart';
 import 'package:get_it/get_it.dart';
+import 'package:robo_coffee_app/profile/profile_repo.dart';
 
 void registerAppModule() {
   GetIt getIt = GetIt.instance;
@@ -28,6 +29,8 @@ void registerAppModule() {
 
   getIt.registerSingleton<AuthRepository>(AuthRepositoryImpl(authApi));
 
-  getIt.registerSingleton<ProductRepository>(FakeProductRepository());
+  getIt.registerSingleton<ProductRepository>(FakeProductRepositoryImpl());
+
+  getIt.registerSingleton<ProfileRepository>(FakeProfileRepositoryImpl());
 
 }

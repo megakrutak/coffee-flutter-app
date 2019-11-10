@@ -1,10 +1,12 @@
 import 'package:robo_coffee_app/auth/phone_login/login_bloc.dart';
 import 'package:robo_coffee_app/auth/phone_login/login_event.dart';
 import 'package:robo_coffee_app/auth/phone_login/login_state.dart';
+import 'package:robo_coffee_app/auth/phone_login/phone_text_field.dart';
 import 'package:robo_coffee_app/lang/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:robo_coffee_app/logo.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -12,10 +14,7 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  var _phoneController = TextEditingController(
-    text: "+7 (",
-  );
-
+  var _phoneController = TextEditingController();
   var _smsCodeController = TextEditingController();
 
   @override
@@ -49,43 +48,28 @@ class _LoginFormState extends State<LoginForm> {
             return _smsCodeForm(_trans);
           }
 
-          return _phoneForm(_trans);
+          return _phoneForm(context);
         },
       ),
     );
   }
 
-  Widget _phoneForm(Translator trans) {
-    return Center(
+  Widget _phoneForm(BuildContext context) {
+    return Container(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            TextFormField(
-              autofocus: true,
-              keyboardType: TextInputType.number,
-              controller: _phoneController,
-              inputFormatters: [
-                MaskTextInputFormatter(
-                  mask: '+7 (###) ###-##-##',
-                  filter: {"#": RegExp(r'[0-9]')},
-                )
-              ],
-              decoration: InputDecoration(
-                  labelText: Translator.of(context).trans("phone_input_label")),
-              onChanged: (String text) {},
-            ),
-            FlatButton(
-                color: Colors.blueAccent,
-                textColor: Colors.white,
-                child: Text(
-                  trans.trans("send_sms_code_button_title"),
-                ),
-                onPressed: () {
-                  BlocProvider.of<LoginBloc>(context).add(
-                    SmsCodeButtonPressed(phone: _phoneController.text),
-                  );
-                }),
+            SizedBox(height: 32.0),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[RoboCoffeeLogo()]),
+            SizedBox(height: 16.0),
+            Text(Translator.of(context).trans("enter_phone_hint"), style: Theme.of(context).accentTextTheme.body2),
+            SizedBox(height: 16.0),
+            PhoneTextField(onSubmit: () {
+
+            }, controller: _phoneController, autoFocus: true),
           ],
         ),
       ),
@@ -98,7 +82,7 @@ class _LoginFormState extends State<LoginForm> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-          /*PinCodeTextField(
+            /*PinCodeTextField(
               autofocus: true,
               hideCharacter: false,
               highlight: true,
@@ -116,23 +100,23 @@ class _LoginFormState extends State<LoginForm> {
               pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
               pinTextAnimatedSwitcherDuration: Duration(milliseconds: 300),
             )*/
-          TextField(
-              autofocus: true,
-              controller: _smsCodeController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                  labelText:
-                  Translator.of(context).trans("sms_code_input_label"))),
-          FlatButton(
-            color: Colors.green,
-            textColor: Colors.white,
-            child: Text(trans.trans("login_button_title")),
-            onPressed: () {
-              BlocProvider.of<LoginBloc>(context).add(
-                LoginButtonPressed(smsCode: _smsCodeController.text),
-              );
-            },
-          ),
+            TextField(
+                autofocus: true,
+                controller: _smsCodeController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                    labelText:
+                        Translator.of(context).trans("sms_code_input_label"))),
+            FlatButton(
+              color: Colors.green,
+              textColor: Colors.white,
+              child: Text(trans.trans("login_button_title")),
+              onPressed: () {
+                BlocProvider.of<LoginBloc>(context).add(
+                  LoginButtonPressed(smsCode: _smsCodeController.text),
+                );
+              },
+            ),
           ],
         ),
       ),
