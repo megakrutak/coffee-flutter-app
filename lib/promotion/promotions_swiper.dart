@@ -10,8 +10,8 @@ class PromotionsSwiper extends StatelessWidget {
 
     List<String> promoImages = [
       "https://cdn.24.co.za/files/Cms/General/d/8470/840a8cce78b94906b08a632c8cbc9a67.png",
-      "https://cdn.24.co.za/files/Cms/General/d/8470/840a8cce78b94906b08a632c8cbc9a67.png",
-      "https://cdn.24.co.za/files/Cms/General/d/8470/840a8cce78b94906b08a632c8cbc9a67.png",
+      "https://bigpicture.ru/wp-content/uploads/2018/06/0007.jpg",
+      "https://goprosport.ru/wp-content/uploads/2019/02/0-zahod-596-coffee-maker-new.png",
     ];
 
     return Container(

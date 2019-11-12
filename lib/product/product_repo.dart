@@ -16,16 +16,12 @@ class FakeProductRepositoryImpl implements ProductRepository {
           return ProductMenuResponse(List.of([
             ProductMenuItem(1, "Кофе",
                 "https://u24.ru/img/news/article_big_496401565261951.jpg", 0),
-            ProductMenuItem(2, "Кофе2",
-                "https://u24.ru/img/news/article_big_496401565261951.jpg", 0),
-            ProductMenuItem(3, "Кофе3",
-                "https://u24.ru/img/news/article_big_496401565261951.jpg", 0),
-            ProductMenuItem(4, "Кофе4",
-                "https://u24.ru/img/news/article_big_496401565261951.jpg", 0),
-            ProductMenuItem(5, "Кофе5",
-                "https://u24.ru/img/news/article_big_496401565261951.jpg", 0),
-            ProductMenuItem(6, "Кофе6",
-                "https://u24.ru/img/news/article_big_496401565261951.jpg", 0)
+            ProductMenuItem(2, "Другие напитки",
+                "https://nversia.ru/imgs/thumbs_news/1562653533_1147681669_720-480.jpg", 0),
+            ProductMenuItem(3, "Закуски",
+                "https://gotovim-doma.ru/images/recipe/4/55/4553ffb0b2312eb327c1437769bb1e6d_l.jpg", 0),
+            ProductMenuItem(4, "Выпечка",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRs4QjdBSsem5z--xbFmIgs9GWAEdzWogm3w6NT-7oYBTmMlr0_", 0),
           ]));
         }
     );
