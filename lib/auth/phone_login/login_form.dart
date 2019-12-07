@@ -65,11 +65,12 @@ class _LoginFormState extends State<LoginForm> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[RoboCoffeeLogo()]),
             SizedBox(height: 16.0),
-            Text(Translator.of(context).trans("enter_phone_hint"), style: Theme.of(context).accentTextTheme.body2),
+            Text(Translator.of(context).trans("enter_phone_hint"),
+                textAlign: TextAlign.center,
+                style: Theme.of(context).accentTextTheme.body2),
             SizedBox(height: 16.0),
-            PhoneTextField(onSubmit: () {
-
-            }, controller: _phoneController, autoFocus: true),
+            PhoneTextField(
+                onSubmit: () {}, controller: _phoneController, autoFocus: true),
           ],
         ),
       ),

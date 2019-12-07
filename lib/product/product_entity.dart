@@ -1,9 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:robo_coffee_app/base/json_encodable.dart';
 
 part 'product_entity.g.dart';
 
 @JsonSerializable()
-class ProductMenuResponse {
+class ProductMenuResponse implements JsonEncodable {
   @JsonKey(name: "menu")
   List<ProductMenuItem> menu;
 
@@ -16,7 +17,7 @@ class ProductMenuResponse {
 }
 
 @JsonSerializable()
-class ProductMenuItem {
+class ProductMenuItem implements JsonEncodable {
   @JsonKey(name: "id")
   int id;
 
@@ -38,7 +39,7 @@ class ProductMenuItem {
 }
 
 @JsonSerializable()
-class Product {
+class Product implements JsonEncodable {
   @JsonKey(name: "id")
   int id;
 
@@ -70,7 +71,7 @@ class Product {
 }
 
 @JsonSerializable()
-class ProductModification {
+class ProductModification implements JsonEncodable {
   @JsonKey(name: "id")
   int id;
 

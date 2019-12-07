@@ -17,7 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   @override
   Stream<AuthState> mapEventToState(AuthEvent event) async* {
     if (event is AppStarted) {
-      var token = await authRepo.getToken();
+      var token = await authRepo.readToken();
       var profile = await profileRepo.getProfile();
 
       if (token != null) {

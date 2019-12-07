@@ -1,9 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:robo_coffee_app/base/json_encodable.dart';
 
 part 'auth_entity.g.dart';
 
 @JsonSerializable()
-class TokenResponse {
+class TokenResponse implements JsonEncodable {
   @JsonKey(name: "access_token")
   String accessToken;
   @JsonKey(name: "type")
@@ -18,7 +19,7 @@ class TokenResponse {
 }
 
 @JsonSerializable()
-class Credentials {
+class Credentials implements JsonEncodable {
   @JsonKey(name: "login")
   String login;
   @JsonKey(name: "password")
@@ -31,7 +32,7 @@ class Credentials {
 }
 
 @JsonSerializable()
-class FirebaseUserTokenCheckRequest {
+class FirebaseUserTokenCheckRequest implements JsonEncodable {
   @JsonKey(name: "tokenId")
   String tokenId;
 

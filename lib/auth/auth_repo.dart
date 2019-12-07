@@ -1,14 +1,17 @@
 import 'dart:async';
+import 'dart:convert';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:robo_coffee_app/auth/auth_api.dart';
 import 'package:robo_coffee_app/auth/auth_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:robo_coffee_app/auth/auth_token_storage.dart';
 
 abstract class AuthRepository {
   Future<String> sendPhone(String phone);
 
   Future<TokenResponse> sendCode(String code);
 
-  Future<TokenResponse> getToken();
+  Future<TokenResponse> readToken();
 
   Future<void> persistToken(TokenResponse token);
 
@@ -16,12 +19,12 @@ abstract class AuthRepository {
 }
 
 class AuthRepositoryImpl implements AuthRepository {
-  //var _token = TokenResponse("access", "bearer", "refresh"); //FIXME: shit
-  var _token; //= TokenResponse("access", "bearer", "refresh"); //FIXME: shit
+
   var _verificationId = "";
   AuthApi _authApi;
+  TokenStorage _tokenStorage;
 
-  AuthRepositoryImpl(this._authApi);
+  AuthRepositoryImpl(this._authApi, this._tokenStorage);
 
   @override
   Future<String> sendPhone(String phone) async {
@@ -66,21 +69,17 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<TokenResponse> getToken() async {
-    return Future.delayed(Duration(seconds: 2), () => _token);
+  Future<TokenResponse> readToken() async {
+    return await _tokenStorage.readToken();
   }
 
   @override
-  persistToken(TokenResponse token) async {
-    return Future.delayed(Duration(seconds: 2), () {
-      _token = token;
-    });
+  Future<void> persistToken(TokenResponse token) async {
+    await _tokenStorage.writeToken(token);
   }
 
   @override
   Future<void> deleteToken() async {
-    return Future.delayed(Duration(seconds: 2), () {
-      _token = null;
-    });
+    await _tokenStorage.deleteToken();
   }
 }

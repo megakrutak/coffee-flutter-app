@@ -1,9 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:robo_coffee_app/base/json_encodable.dart';
 
 part 'profile_entity.g.dart';
 
 @JsonSerializable()
-class UserProfile {
+class UserProfile implements JsonEncodable {
 
   @JsonKey(name: "firstName")
   String firstName;
