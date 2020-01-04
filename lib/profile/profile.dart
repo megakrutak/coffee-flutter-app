@@ -32,7 +32,7 @@ class ProfileWidget extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute<Null>(
               builder: (BuildContext context) {
-                return AuthDialog();
+                return AuthScreen();
               },
               fullscreenDialog: true
           ));
@@ -50,7 +50,7 @@ class ProfileWidget extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute<Null>(
               builder: (BuildContext context) {
-                return AuthDialog();
+                return AuthScreen();
               },
               fullscreenDialog: true
           ));

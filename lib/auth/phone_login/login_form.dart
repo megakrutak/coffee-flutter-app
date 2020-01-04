@@ -1,3 +1,4 @@
+import 'package:http_logger/logger.dart';
 import 'package:robo_coffee_app/auth/phone_login/login_bloc.dart';
 import 'package:robo_coffee_app/auth/phone_login/login_event.dart';
 import 'package:robo_coffee_app/auth/phone_login/login_state.dart';
@@ -70,7 +71,14 @@ class _LoginFormState extends State<LoginForm> {
                 style: Theme.of(context).accentTextTheme.body2),
             SizedBox(height: 16.0),
             PhoneTextField(
-                onSubmit: () {}, controller: _phoneController, autoFocus: true),
+                onSubmit: () {
+                  BlocProvider.of<LoginBloc>(context).add(
+                    SmsCodeButtonPressed(phone: '+7' + _phoneController.text.replaceAll(RegExp(r'\-|\s'), ''))
+                  );
+                }, 
+                controller: _phoneController, 
+                autoFocus: true
+            ),
           ],
         ),
       ),

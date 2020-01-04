@@ -111,7 +111,19 @@ class CabinetScreen extends StatelessWidget {
       };
     } else {
       onClick = () {
-        Navigator.of(context).push(SlideFromBottomRoute(widget: AuthDialog()));
+        Navigator.of(context).push(MaterialPageRoute<Null>(
+              builder: (BuildContext context) {
+                return AuthScreen();
+              }
+          ));
+        /*showModalBottomSheet(
+          context: context, 
+          builder: (BuildContext context) {
+            return AuthDialog();
+          }, 
+          backgroundColor: Colors.transparent,
+          isScrollControlled: true
+        );*/
       };
     }
 

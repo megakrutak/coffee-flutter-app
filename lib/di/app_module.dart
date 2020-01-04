@@ -2,6 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:robo_coffee_app/auth/auth_api.dart';
 import 'package:robo_coffee_app/auth/auth_provider.dart';
 import 'package:robo_coffee_app/auth/auth_repo.dart';
+import 'package:robo_coffee_app/auth/auth_token_storage.dart';
 import 'package:robo_coffee_app/base/http.dart';
 import 'package:robo_coffee_app/config/app_config.dart';
 import 'package:robo_coffee_app/main.dart';
@@ -21,7 +22,7 @@ void registerAppModule() {
   var authProvider = AppAuthProvider(null, null);
   var httpClient = RestApiHttpClient(appConfig, authProvider);
   var authApi = RemoteAuthApi(appConfig, httpClient);
-  var authTokenStorage = FlutterSecureStorage();
+  var authTokenStorage = SecureTokenStorage(FlutterSecureStorage());
 
   getIt.registerSingleton<RestApiHttpClient>(httpClient);
 

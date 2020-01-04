@@ -8,7 +8,9 @@ class FullScreenDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      child: Column(
       children: <Widget>[
         SizedBox(height: 50),
         Expanded(
@@ -20,6 +22,7 @@ class FullScreenDialog extends StatelessWidget {
           ),
         ),
       ],
+    ),
     );
   }
 }

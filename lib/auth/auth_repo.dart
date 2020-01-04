@@ -39,6 +39,7 @@ class AuthRepositoryImpl implements AuthRepository {
         },
         codeSent: (String verificationId, [int forceResendingToken]) {
           _verificationId = verificationId;
+          print("_verificationId: $_verificationId");
         },
         codeAutoRetrievalTimeout: (String verificationId) {
           _verificationId = verificationId;

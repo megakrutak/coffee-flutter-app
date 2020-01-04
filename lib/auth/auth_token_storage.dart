@@ -23,6 +23,9 @@ class SecureTokenStorage implements TokenStorage {
   @override
   Future<TokenResponse> readToken() async {
     var data = await _secureStorage.read(key: "token");
+    if (data == null) {
+      return null;
+    }
     return TokenResponse.fromJson(json.decode(data));
   }
 
