@@ -18,9 +18,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Stream<AuthState> mapEventToState(AuthEvent event) async* {
     if (event is AppStarted) {
       var token = await authRepo.readToken();
-      var profile = await profileRepo.getProfile();
 
       if (token != null) {
+        var profile = await profileRepo.getProfile(fromCache: true);
         yield AuthAuthenticated(profile: profile);
       } else {
         yield AuthUnauthenticated();
@@ -30,7 +30,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (event is LoggedIn) {
       yield AuthLoading();
       await authRepo.persistToken(event.token);
-      var profile = await profileRepo.getProfile(fromCache: true);
+      var profile = await profileRepo.getProfile(fromCache: false);
       yield AuthAuthenticated(profile: profile);
     }
 

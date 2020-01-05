@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:bloc/bloc.dart';
-import 'package:robo_coffee_app/auth/auth_dialog.dart';
 import 'package:robo_coffee_app/auth/auth_repo.dart';
+import 'package:robo_coffee_app/auth/auth_screen.dart';
 import 'package:robo_coffee_app/cabinet.dart';
 import 'package:robo_coffee_app/di/app_module.dart';
 import 'package:robo_coffee_app/lang/translator.dart';
-import 'package:robo_coffee_app/profile/profile_dialog.dart';
 import 'package:robo_coffee_app/profile/profile_repo.dart';
+import 'package:robo_coffee_app/profile/profile_screen.dart';
 import 'package:robo_coffee_app/splash.dart';
 import 'package:robo_coffee_app/theme/theme_data.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +70,9 @@ class CoffeeApp extends StatelessWidget {
           '/cart': (context) => _buildHome(),
           '/history': (context) => _buildHome(),
           '/promo': (context) => _buildHome(),
-          '/info': (context) => _buildHome()
+          '/info': (context) => _buildHome(),
+          '/profile': (context) => ProfileScreen(),
+          '/auth': (context) => AuthScreen(),
         }
     );
   }

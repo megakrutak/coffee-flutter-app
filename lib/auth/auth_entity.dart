@@ -7,7 +7,7 @@ part 'auth_entity.g.dart';
 class TokenResponse implements JsonEncodable {
   @JsonKey(name: "access_token")
   String accessToken;
-  @JsonKey(name: "type")
+  @JsonKey(name: "token_type")
   String type;
   @JsonKey(name: "refresh_token")
   String refreshToken;

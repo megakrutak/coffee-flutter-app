@@ -1,5 +1,4 @@
 import 'package:robo_coffee_app/auth/auth_bloc.dart';
-import 'package:robo_coffee_app/auth/auth_dialog.dart';
 import 'package:robo_coffee_app/auth/auth_state.dart';
 import 'package:robo_coffee_app/lang/translator.dart';
 import 'package:robo_coffee_app/logo.dart';
@@ -11,8 +10,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:robo_coffee_app/profile/profile_dialog.dart';
-import 'package:robo_coffee_app/transition/slide_from_bottom_route.dart';
 
 class CabinetScreen extends StatelessWidget {
   @override
@@ -107,15 +104,11 @@ class CabinetScreen extends StatelessWidget {
     if (isAuthenticated) {
       buttonTitle = trans.trans("profile_title");
       onClick = () {
-        Navigator.of(context).push(SlideFromBottomRoute(widget: ProfileDialog()));
+        Navigator.of(context).pushNamed('/profile');
       };
     } else {
       onClick = () {
-        Navigator.of(context).push(MaterialPageRoute<Null>(
-              builder: (BuildContext context) {
-                return AuthScreen();
-              }
-          ));
+        Navigator.of(context).pushNamed('/auth');
         /*showModalBottomSheet(
           context: context, 
           builder: (BuildContext context) {
