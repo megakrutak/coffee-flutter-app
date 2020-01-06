@@ -34,3 +34,13 @@ class LoginButtonPressed extends LoginEvent {
   String toString() =>
       'LoginButtonPressed { smsCode: $smsCode }';
 }
+
+class ChangePhoneButtonPressed extends LoginEvent {
+
+  @override
+  List<Object> get props => [];
+
+  @override
+  String toString() =>
+      'ChangePhoneButtonPressed {}';
+}

@@ -22,7 +22,9 @@ getTranslations(lang) {
       "network_error_title": "Что-то со связью",
       "network_error_text": "Похоже, нет интернета или сигнал совсем слабый",
       "user_profile_title": "Профиль",
-      "enter_phone_hint": "Пожалуйста, введите номер своего телефона, чтобы авторизоваться"
+      "enter_phone_hint": "Пожалуйста, введите номер своего телефона, чтобы авторизоваться",
+      "change_phone_title": "Изменить номер",
+      "sms_code_sended_message": "На номер \$phone отправлен код"
     },
     "en": {
       "app_title": "RoboCoffee",
@@ -46,7 +48,9 @@ getTranslations(lang) {
       "network_error_title": "Something with connect",
       "network_error_text": "It seems that there is no internet or the signal is very weak",
       "user_profile_title": "User profile",
-      "enter_phone_hint": "Please enter your phone number to log in"
+      "enter_phone_hint": "Please enter your phone number to log in",
+      "change_phone_title": "Change number",
+      "sms_code_sended_message": "Sms code sended to \$phone"
     }
   })[lang];
 }

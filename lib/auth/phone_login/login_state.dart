@@ -10,7 +10,10 @@ abstract class LoginState extends Equatable {
 
 class LoginInitial extends LoginState {}
 
-class LoginInProcess extends LoginState {}
+class LoginInProcess extends LoginState {
+  final String phone;
+  const LoginInProcess({@required this.phone});
+}
 
 class LoginLoading extends LoginState {}
 

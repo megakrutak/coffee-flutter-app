@@ -27,7 +27,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginLoading();
       try {
         await authRepo.sendPhone(event.phone);
-        yield LoginInProcess();
+        yield LoginInProcess(phone: event.phone);
       } catch (error) {
         yield LoginFailure(error: error.toString());
       }
@@ -44,5 +44,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }
     }
 
+    if (event is ChangePhoneButtonPressed) {
+      yield LoginInitial();
+    }
   }
 }

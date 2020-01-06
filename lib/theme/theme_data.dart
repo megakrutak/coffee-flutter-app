@@ -5,8 +5,9 @@ var appTheme = ThemeData(
   // Define the default brightness and colors.
   brightness: Brightness.light,
   primaryColor: Colors.green,
-  primaryColorDark: Colors.green[900],
-  accentColor: Colors.green,
+  primaryColorDark: Colors.green[600],
+  primaryColorLight: Colors.green[300],
+  accentColor: Colors.white,
 
   // Define the default font family.
   fontFamily: 'Montserrat',
@@ -25,6 +26,7 @@ var appTheme = ThemeData(
     display3: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold, color: Colors.white),
     title: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.white),
     body1: TextStyle(fontSize: 16.0, fontWeight: FontWeight.normal, color: Colors.white),
+    body2: TextStyle(fontSize: 14.0, fontWeight: FontWeight.normal, color: Colors.white)
   ),
 
   primaryTextTheme: TextTheme()

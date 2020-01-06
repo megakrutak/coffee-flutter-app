@@ -15,9 +15,10 @@ class AuthScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         title: Text(translator.trans('authorization_title')),
       ),
-      backgroundColor: Colors.purple,
+      backgroundColor: Theme.of(context).primaryColor,
       body: BlocProvider<LoginBloc>(
         builder: (context) {
           return LoginBloc(

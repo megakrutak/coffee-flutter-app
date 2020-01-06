@@ -18,12 +18,16 @@ class Translator {
   }
 
   // This method will be called from every widget which needs a localized text
-  String trans(String key) {
+  String trans(String key, [Map<String, String> params]) {
     String translation = getTranslations(locale.languageCode)[key];
 
     if (translation == null) {
       return key;
     }
+
+    params?.forEach((k, v) {
+      translation = translation.replaceAll(RegExp("\\\$$k"), v);
+    });
 
     return translation;
   }
