@@ -24,7 +24,8 @@ getTranslations(lang) {
       "user_profile_title": "Профиль",
       "enter_phone_hint": "Пожалуйста, введите номер своего телефона, чтобы авторизоваться",
       "change_phone_title": "Изменить номер",
-      "sms_code_sended_message": "На номер \$phone отправлен код"
+      "sms_code_sended_message": "На номер \$phone отправлен код",
+      "resend_sms_title": "Повторить SMS"
     },
     "en": {
       "app_title": "RoboCoffee",
@@ -50,7 +51,8 @@ getTranslations(lang) {
       "user_profile_title": "User profile",
       "enter_phone_hint": "Please enter your phone number to log in",
       "change_phone_title": "Change number",
-      "sms_code_sended_message": "Sms code sended to \$phone"
+      "sms_code_sended_message": "Sms code sended to \$phone",
+      "resend_sms_title": "Resend SMS"
     }
   })[lang];
 }

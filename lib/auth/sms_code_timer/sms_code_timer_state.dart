@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 abstract class SmsCodeTimerState extends Equatable {
-  final int duration;
-  const SmsCodeTimerState(this.duration);
+  const SmsCodeTimerState();
 
   @override
   List<Object> get props => [];
@@ -10,15 +9,14 @@ abstract class SmsCodeTimerState extends Equatable {
 
 class InitialSmsCodeTimerState extends SmsCodeTimerState {
 
-  InitialSmsCodeTimerState(int duration) : super(duration);
-
   @override
-  String toString() => 'Ready { duration: $duration }';
+  String toString() => 'Initial { }';
 }
 
 class RunningSmsCodeTimerState extends SmsCodeTimerState {
+  final int duration;
 
-  RunningSmsCodeTimerState(int duration) : super(duration);
+  RunningSmsCodeTimerState(this.duration) : super();
 
   @override
   String toString() => 'Running { duration: $duration }';

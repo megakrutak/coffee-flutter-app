@@ -26,5 +26,5 @@ class TickSmsCodeTimerEvent extends SmsCodeTimerEvent {
   List<Object> get props => [duration];
 
   @override
-  String toString() => "Start { duration: $duration }";
+  String toString() => "Tick { duration: $duration }";
 }

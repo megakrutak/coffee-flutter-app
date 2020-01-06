@@ -1,9 +1,12 @@
-
 import 'package:pin_code_text_field/pin_code_text_field.dart';
 import 'package:robo_coffee_app/auth/phone_login/login_bloc.dart';
 import 'package:robo_coffee_app/auth/phone_login/login_event.dart';
 import 'package:robo_coffee_app/auth/phone_login/login_state.dart';
 import 'package:robo_coffee_app/auth/phone_login/phone_text_field.dart';
+import 'package:robo_coffee_app/auth/sms_code_timer/sms_code_timer_bloc.dart';
+import 'package:robo_coffee_app/auth/sms_code_timer/sms_code_timer_event.dart';
+import 'package:robo_coffee_app/auth/sms_code_timer/sms_code_timer_state.dart';
+import 'package:robo_coffee_app/auth/sms_code_timer/ticker.dart';
 import 'package:robo_coffee_app/lang/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -95,8 +98,7 @@ class _LoginFormState extends State<LoginForm> {
           children: <Widget>[
             Spacer(),
             Text(trans.trans("sms_code_sended_message", {'phone': phone}),
-                style: theme.accentTextTheme.body1
-            ),
+                style: theme.accentTextTheme.body1),
             PinCodeTextField(
               autofocus: true,
               hideCharacter: false,
@@ -106,9 +108,8 @@ class _LoginFormState extends State<LoginForm> {
               hasTextBorderColor: theme.primaryColorLight,
               maxLength: 6,
               onDone: (text) {
-                BlocProvider.of<LoginBloc>(context).add(
-                  LoginButtonPressed(smsCode: text)
-                );
+                BlocProvider.of<LoginBloc>(context)
+                    .add(LoginButtonPressed(smsCode: text));
               },
               pinBoxWidth: 30.0,
               wrapAlignment: WrapAlignment.start,
@@ -122,13 +123,16 @@ class _LoginFormState extends State<LoginForm> {
             Spacer(),
             Row(
               children: <Widget>[
+                SmsCodeTimer(onPressed: () {
+                  print("resend sms");
+                }),
                 Spacer(),
                 FlatButton(
-                  child: Text(trans.trans("change_phone_title"), style: theme.accentTextTheme.body1),
+                  child: Text(trans.trans("change_phone_title"),
+                      style: theme.accentTextTheme.body1),
                   onPressed: () {
-                    BlocProvider.of<LoginBloc>(context).add(
-                      ChangePhoneButtonPressed()
-                    );
+                    BlocProvider.of<LoginBloc>(context)
+                        .add(ChangePhoneButtonPressed());
                   },
                 ),
               ],
@@ -137,5 +141,36 @@ class _LoginFormState extends State<LoginForm> {
         ),
       ),
     );
+  }
+}
+
+class SmsCodeTimer extends StatelessWidget {
+  final Function onPressed;
+
+  SmsCodeTimer({this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    var trans = Translator.of(context);
+    var theme = Theme.of(context);
+
+    return BlocProvider<SmsCodeTimerBloc>(builder: (context) {
+      SmsCodeTimerBloc(ticker: Ticker())
+      ..add(StartSmsCodeTimerEvent(duration: 60));
+    }, child: BlocBuilder<SmsCodeTimerBloc, SmsCodeTimerState>(
+      builder: (context, state) {
+        var title = trans.trans("resend_sms_title");
+
+        if (state is RunningSmsCodeTimerState) {
+          return Text("$title (00:${state.duration})", style: theme.accentTextTheme.body1);
+        }
+
+        return FlatButton(
+            child: Text("$title", style: theme.accentTextTheme.body1),
+            onPressed: () {
+              this.onPressed();
+            });
+      },
+    ));
   }
 }

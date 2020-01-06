@@ -4,7 +4,6 @@ import 'package:meta/meta.dart';
 import './bloc.dart';
 
 class SmsCodeTimerBloc extends Bloc<SmsCodeTimerEvent, SmsCodeTimerState> {
-  final int duration = 60;
   final Ticker _ticker;
 
   StreamSubscription<int> _tickerSubscription;
@@ -13,7 +12,7 @@ class SmsCodeTimerBloc extends Bloc<SmsCodeTimerEvent, SmsCodeTimerState> {
     : assert(ticker != null), _ticker = ticker;
 
   @override
-  SmsCodeTimerState get initialState => InitialSmsCodeTimerState(duration);
+  SmsCodeTimerState get initialState => InitialSmsCodeTimerState();
 
   @override
   Stream<SmsCodeTimerState> mapEventToState(SmsCodeTimerEvent event) async* {
@@ -33,6 +32,12 @@ class SmsCodeTimerBloc extends Bloc<SmsCodeTimerEvent, SmsCodeTimerState> {
   }
 
   Stream<SmsCodeTimerState> _mapTickToState(TickSmsCodeTimerEvent tick) async* {
-    yield tick.duration > 0 ? RunningSmsCodeTimerState(tick.duration) : InitialSmsCodeTimerState(this.duration);
+    yield tick.duration > 0 ? RunningSmsCodeTimerState(tick.duration) : InitialSmsCodeTimerState();
+  }
+
+  @override
+  Future<void> close() {
+    _tickerSubscription?.cancel();
+    super.close();
   }
 }
