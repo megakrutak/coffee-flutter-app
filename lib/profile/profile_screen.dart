@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
         title: Text(translator.trans('user_profile_title')),
       ),
       body: BlocProvider<ProfileBloc>(
-        builder: (context) {
+        create: (context) {
           return ProfileBloc(profileRepo: getIt.get<ProfileRepository>())
             ..add(LoadProfile());
         },

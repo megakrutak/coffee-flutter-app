@@ -1,22 +1,25 @@
 import 'package:equatable/equatable.dart';
 
-abstract class SmsCodeTimerState extends Equatable {
-  const SmsCodeTimerState();
+abstract class TimerState extends Equatable {
+  const TimerState();
 
   @override
   List<Object> get props => [];
 }
 
-class InitialSmsCodeTimerState extends SmsCodeTimerState {
+class Ready extends TimerState {
 
   @override
-  String toString() => 'Initial { }';
+  String toString() => 'Ready { }';
 }
 
-class RunningSmsCodeTimerState extends SmsCodeTimerState {
+class Running extends TimerState {
   final int duration;
 
-  RunningSmsCodeTimerState(this.duration) : super();
+  Running(this.duration) : super();
+
+  @override
+  List<Object> get props => [duration];
 
   @override
   String toString() => 'Running { duration: $duration }';

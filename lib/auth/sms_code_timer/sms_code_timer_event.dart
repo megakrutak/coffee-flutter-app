@@ -1,26 +1,29 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-abstract class SmsCodeTimerEvent extends Equatable {
-  const SmsCodeTimerEvent();
+abstract class TimerEvent extends Equatable {
+  const TimerEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class StartSmsCodeTimerEvent extends SmsCodeTimerEvent {
+class StartTimerEvent extends TimerEvent {
   final int duration;
 
-  StartSmsCodeTimerEvent({@required this.duration});
+  StartTimerEvent({@required this.duration});
+
+  @override
+  List<Object> get props => [duration];
 
   @override
   String toString() => "Start { duration: $duration }";
 }
 
-class TickSmsCodeTimerEvent extends SmsCodeTimerEvent {
+class TickEvent extends TimerEvent {
   final int duration;
 
-  TickSmsCodeTimerEvent({@required this.duration});
+  TickEvent({@required this.duration});
 
   @override
   List<Object> get props => [duration];

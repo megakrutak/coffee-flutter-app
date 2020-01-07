@@ -6,7 +6,6 @@ import 'package:robo_coffee_app/auth/phone_login/phone_text_field.dart';
 import 'package:robo_coffee_app/auth/sms_code_timer/sms_code_timer_bloc.dart';
 import 'package:robo_coffee_app/auth/sms_code_timer/sms_code_timer_event.dart';
 import 'package:robo_coffee_app/auth/sms_code_timer/sms_code_timer_state.dart';
-import 'package:robo_coffee_app/auth/sms_code_timer/ticker.dart';
 import 'package:robo_coffee_app/lang/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,10 +73,8 @@ class _LoginFormState extends State<LoginForm> {
             SizedBox(height: 16.0),
             PhoneTextField(
                 onSubmit: () {
-                  BlocProvider.of<LoginBloc>(context).add(SmsCodeButtonPressed(
-                      phone: '+7' +
-                          _phoneController.text
-                              .replaceAll(RegExp(r'\-|\s'), '')));
+                  BlocProvider.of<LoginBloc>(context)
+                      .add(SmsCodeButtonPressed(phone: _getPhoneFormatted()));
                 },
                 controller: _phoneController,
                 autoFocus: true),
@@ -90,6 +87,8 @@ class _LoginFormState extends State<LoginForm> {
   Widget _smsCodeForm(BuildContext context, String phone) {
     var trans = Translator.of(context);
     var theme = Theme.of(context);
+    BlocProvider.of<SmsCodeTimerBloc>(context)
+        .add(StartTimerEvent(duration: 60));
 
     return Center(
       child: Padding(
@@ -124,7 +123,8 @@ class _LoginFormState extends State<LoginForm> {
             Row(
               children: <Widget>[
                 SmsCodeTimer(onPressed: () {
-                  print("resend sms");
+                  BlocProvider.of<LoginBloc>(context)
+                      .add(SmsCodeButtonPressed(phone: _getPhoneFormatted()));
                 }),
                 Spacer(),
                 FlatButton(
@@ -142,6 +142,10 @@ class _LoginFormState extends State<LoginForm> {
       ),
     );
   }
+
+  String _getPhoneFormatted() {
+    return '+7' + _phoneController.text.replaceAll(RegExp(r'\-|\s'), '');
+  }
 }
 
 class SmsCodeTimer extends StatelessWidget {
@@ -154,15 +158,15 @@ class SmsCodeTimer extends StatelessWidget {
     var trans = Translator.of(context);
     var theme = Theme.of(context);
 
-    return BlocProvider<SmsCodeTimerBloc>(builder: (context) {
-      SmsCodeTimerBloc(ticker: Ticker())
-      ..add(StartSmsCodeTimerEvent(duration: 60));
-    }, child: BlocBuilder<SmsCodeTimerBloc, SmsCodeTimerState>(
+    return BlocBuilder<SmsCodeTimerBloc, TimerState>(
       builder: (context, state) {
         var title = trans.trans("resend_sms_title");
 
-        if (state is RunningSmsCodeTimerState) {
-          return Text("$title (00:${state.duration})", style: theme.accentTextTheme.body1);
+        if (state is Running) {
+          var duration = state.duration.toString().padLeft(2, "0");
+
+          return Text("$title (00:$duration)",
+              style: theme.accentTextTheme.body1);
         }
 
         return FlatButton(
@@ -171,6 +175,6 @@ class SmsCodeTimer extends StatelessWidget {
               this.onPressed();
             });
       },
-    ));
+    );
   }
 }

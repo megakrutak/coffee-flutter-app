@@ -18,7 +18,7 @@ class CabinetScreen extends StatelessWidget {
     var productRepo = getIt.get<ProductRepository>();
 
     return BlocProvider<MenuBloc>(
-      builder: (context) {
+      create: (context) {
         return MenuBloc(repo: productRepo)..add(LoadMenu());
       },
       child: _buildScreen(context),

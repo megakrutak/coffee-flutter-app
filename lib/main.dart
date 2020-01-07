@@ -25,7 +25,7 @@ void main() async {
 
   runApp(
     BlocProvider<AuthBloc>(
-      builder: (context) {
+      create: (context) {
         return AuthBloc(authRepo: getIt.get<AuthRepository>(), profileRepo: getIt.get<ProfileRepository>())
           ..add(AppStarted());
       },

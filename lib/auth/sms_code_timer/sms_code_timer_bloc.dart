@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import './bloc.dart';
 
-class SmsCodeTimerBloc extends Bloc<SmsCodeTimerEvent, SmsCodeTimerState> {
+class SmsCodeTimerBloc extends Bloc<TimerEvent, TimerState> {
   final Ticker _ticker;
 
   StreamSubscription<int> _tickerSubscription;
@@ -12,27 +12,27 @@ class SmsCodeTimerBloc extends Bloc<SmsCodeTimerEvent, SmsCodeTimerState> {
     : assert(ticker != null), _ticker = ticker;
 
   @override
-  SmsCodeTimerState get initialState => InitialSmsCodeTimerState();
+  TimerState get initialState => Ready();
 
   @override
-  Stream<SmsCodeTimerState> mapEventToState(SmsCodeTimerEvent event) async* {
-    if (event is StartSmsCodeTimerEvent) {
+  Stream<TimerState> mapEventToState(TimerEvent event) async* {
+    if (event is StartTimerEvent) {
       yield* _mapStartToState(event);
-    } else if (event is TickSmsCodeTimerEvent) {
+    } else if (event is TickEvent) {
       yield* _mapTickToState(event);
     }
   }
 
-  Stream<SmsCodeTimerState> _mapStartToState(StartSmsCodeTimerEvent start) async* {
-     yield RunningSmsCodeTimerState(start.duration);
+  Stream<TimerState> _mapStartToState(StartTimerEvent start) async* {
+     yield Running(start.duration);
     _tickerSubscription?.cancel();
     _tickerSubscription = _ticker
         .tick(ticks: start.duration)
-        .listen((duration) => add(TickSmsCodeTimerEvent(duration: duration)));
+        .listen((duration) => add(TickEvent(duration: duration)));
   }
 
-  Stream<SmsCodeTimerState> _mapTickToState(TickSmsCodeTimerEvent tick) async* {
-    yield tick.duration > 0 ? RunningSmsCodeTimerState(tick.duration) : InitialSmsCodeTimerState();
+  Stream<TimerState> _mapTickToState(TickEvent tick) async* {
+    yield tick.duration > 0 ? Running(tick.duration) : Ready();
   }
 
   @override
