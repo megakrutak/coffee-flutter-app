@@ -7,7 +7,7 @@ var appTheme = ThemeData(
   primaryColor: Colors.green,
   primaryColorDark: Colors.green[600],
   primaryColorLight: Colors.green[300],
-  accentColor: Colors.white,
+  accentColor: Colors.blue,
 
   // Define the default font family.
   fontFamily: 'Montserrat',

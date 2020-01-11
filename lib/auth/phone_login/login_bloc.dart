@@ -8,16 +8,20 @@ import 'package:robo_coffee_app/auth/auth_repo.dart';
 import 'package:robo_coffee_app/auth/phone_login/login_event.dart';
 import 'package:robo_coffee_app/auth/phone_login/login_state.dart';
 import 'package:meta/meta.dart';
+import 'package:robo_coffee_app/profile/profile_repo.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  final ProfileRepository profileRepo;
   final AuthRepository authRepo;
   final AuthBloc authBloc;
 
   LoginBloc({
     @required this.authRepo,
     @required this.authBloc,
+    @required this.profileRepo
   })  : assert(authRepo != null),
-        assert(authBloc != null);
+        assert(authBloc != null),
+        assert(profileRepo != null);
 
   LoginState get initialState => LoginInitial();
 
@@ -27,6 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield LoginLoading();
       try {
         await authRepo.sendPhone(event.phone);
+        await profileRepo.savePhone(event.phone);
         yield LoginInProcess(phone: event.phone);
       } catch (error) {
         yield LoginFailure(error: error.toString());

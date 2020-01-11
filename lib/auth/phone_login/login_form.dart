@@ -111,7 +111,7 @@ class _LoginFormState extends State<LoginForm> {
                     .add(LoginButtonPressed(smsCode: text));
               },
               pinBoxWidth: 30.0,
-              wrapAlignment: WrapAlignment.start,
+              wrapAlignment: WrapAlignment.center,
               pinBoxDecoration:
                   ProvidedPinBoxDecoration.underlinedPinBoxDecoration,
               pinTextStyle: TextStyle(fontSize: 20.0, color: Colors.white),

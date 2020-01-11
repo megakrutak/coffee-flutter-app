@@ -9,11 +9,14 @@ import 'package:robo_coffee_app/auth/phone_login/login_state.dart';
 import 'package:robo_coffee_app/auth/sms_code_timer/sms_code_timer_bloc.dart';
 import 'package:robo_coffee_app/auth/sms_code_timer/ticker.dart';
 import 'package:robo_coffee_app/lang/translator.dart';
+import 'package:robo_coffee_app/profile/profile_repo.dart';
 
 class AuthScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     var authRepo = GetIt.instance.get<AuthRepository>();
+    var profileRepo = GetIt.instance.get<ProfileRepository>();
     var translator = Translator.of(context);
 
     return Scaffold(
@@ -27,7 +30,9 @@ class AuthScreen extends StatelessWidget {
           BlocProvider<LoginBloc>(
             create: (context) {
               return LoginBloc(
-                authRepo: authRepo, authBloc: BlocProvider.of<AuthBloc>(context)
+                profileRepo: profileRepo,
+                authRepo: authRepo, 
+                authBloc: BlocProvider.of<AuthBloc>(context)
               );
             },
           ),

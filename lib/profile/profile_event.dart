@@ -10,12 +10,12 @@ abstract class ProfileEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadProfile extends ProfileEvent {}
+class LoadProfileEvent extends ProfileEvent {}
 
-class UpdateProfile extends ProfileEvent {
+class UpdateProfileEvent extends ProfileEvent {
   final UserProfile profile;
 
-  UpdateProfile({@required this.profile}) : assert(profile != null);
+  UpdateProfileEvent({@required this.profile}) : assert(profile != null);
 
   @override
   List<Object> get props => [profile];

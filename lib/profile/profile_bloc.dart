@@ -15,16 +15,18 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   @override
   Stream<ProfileState> mapEventToState(ProfileEvent event) async* {
-    if (event is LoadProfile) {
+    if (event is LoadProfileEvent) {
       yield ProfileLoading();
       var profile = await profileRepo.getProfile();
-      yield ProfileLoaded(profile: profile);
+      var phone = await profileRepo.getPhone();
+      yield ProfileLoaded(profile: profile, phone: phone);
     }
 
-    if (event is UpdateProfile) {
+    if (event is UpdateProfileEvent) {
       yield ProfileLoading();
       var profile = await profileRepo.updateProfile(event.profile);
-      yield ProfileLoaded(profile: profile);
+      var phone = await profileRepo.getPhone();
+      yield ProfileUpdated(profile: profile, phone: phone);
     }
   }
 

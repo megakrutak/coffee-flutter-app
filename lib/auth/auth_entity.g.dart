@@ -7,14 +7,14 @@ part of 'auth_entity.dart';
 // **************************************************************************
 
 TokenResponse _$TokenResponseFromJson(Map<String, dynamic> json) {
-  return TokenResponse(json['access_token'] as String, json['type'] as String,
-      json['refresh_token'] as String);
+  return TokenResponse(json['access_token'] as String,
+      json['token_type'] as String, json['refresh_token'] as String);
 }
 
 Map<String, dynamic> _$TokenResponseToJson(TokenResponse instance) =>
     <String, dynamic>{
       'access_token': instance.accessToken,
-      'type': instance.type,
+      'token_type': instance.type,
       'refresh_token': instance.refreshToken
     };
 

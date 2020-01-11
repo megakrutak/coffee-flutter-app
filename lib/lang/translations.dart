@@ -25,7 +25,16 @@ getTranslations(lang) {
       "enter_phone_hint": "Пожалуйста, введите номер своего телефона, чтобы авторизоваться",
       "change_phone_title": "Изменить номер",
       "sms_code_sended_message": "На номер \$phone отправлен код",
-      "resend_sms_title": "Повторить SMS"
+      "resend_sms_title": "Повторить SMS",
+
+      //profile form
+      "last_name_title": "Фамилия",
+      "first_name_title": "Имя",
+      "email_title": "E-mail",
+      "phone_title": "Телефон",
+      "birthday_title": "Дата рождения",
+      "orders_history_description": "Ваша история заказов привязана к этому номеру",
+      "save_button_title": "Сохранить"
     },
     "en": {
       "app_title": "RoboCoffee",
@@ -52,7 +61,16 @@ getTranslations(lang) {
       "enter_phone_hint": "Please enter your phone number to log in",
       "change_phone_title": "Change number",
       "sms_code_sended_message": "Sms code sended to \$phone",
-      "resend_sms_title": "Resend SMS"
+      "resend_sms_title": "Resend SMS",
+
+      //profile form
+      "last_name_title": "Last name",
+      "first_name_title": "First name",
+      "email_title": "E-mail",
+      "phone_title": "Phone",
+      "birthday_title": "Birth date",
+      "orders_history_description": "Your orders history linked to this phone number",
+      "save_button_title": "Save"
     }
   })[lang];
 }
